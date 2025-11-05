@@ -1,0 +1,140 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000;
+  border-bottom: 5px solid transparent;
+  border-image: url('https://i.imgur.com/39m6u0h.png') 30 stretch;
+  z-index: 1000;
+  height: 70px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-logo {
+  font-size: 1.8rem; 
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  white-space: nowrap; 
+}
+.nav-logo:hover {
+  color: #EAAA49;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-menu a {
+  font-family: 'Teko', sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #E0E0E0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+  color: #EAAA49;
+}
+
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background-color: #EAAA49;
+  transition: width 0.3s ease;
+}
+
+.nav-menu a.active::after,
+.nav-menu a:hover::after {
+  width: 100%;
+}
+
+.nav-button {
+  padding: 8px 20px;
+  font-size: 1.15rem;
+  flex-shrink: 0; 
+}
+
+.nav-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  z-index: 1002; 
+}
+
+
+.nav-menu-mobile {
+  position: absolute;
+  top: 70px; 
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  z-index: 999;
+  border-bottom: 3px solid #EAAA49;
+}
+
+.nav-menu-mobile a {
+  display: block;
+  padding: 16px 20px;
+  text-align: center;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.3rem;
+  color: #E0E0E0;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.nav-menu-mobile a:hover,
+.nav-menu-mobile a.active {
+  background-color: #EAAA49;
+  color: #000;
+}
+
+.nav-menu-mobile .nav-button-mobile {
+  width: calc(100% - 40px);
+  margin: 16px 20px;
+  padding: 12px;
+}
+
+@media (max-width: 900px) {
+  .nav-menu {
+    display: none;
+  }
+  .nav-button {
+    display: none; 
+  }
+  .nav-toggle {
+    display: block;
+  }
+}
+
+@media (max-width: 380px) {
+  .nav-logo {
+    font-size: 1.5rem; 
+  }
+}
