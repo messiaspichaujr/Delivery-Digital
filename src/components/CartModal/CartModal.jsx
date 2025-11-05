@@ -4,6 +4,7 @@ import { useCart } from '../../context/CartContext';
 import { FiX, FiShoppingCart, FiPlus, FiMinus, FiLoader, FiSend } from 'react-icons/fi';
 import { AddonModal } from './AddonModal';
 import '../../css/CartModal.css';
+import capaImage from "/src/assets/capa-cardapio.jpg";
 
 const WHATSAPP_NUMBER = '5547996879248';
 
@@ -263,7 +264,7 @@ ${paymentText}
             
             <div className="modal-body">
               <img 
-                src="/src/assets/capa-cardapio.jpg" 
+                src={capaImage}
                 alt="Capa do Cardápio" 
                 className="modal-cover-image"
                 onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/600x150/222/FFF?text=Erro+na+Imagem'; }}

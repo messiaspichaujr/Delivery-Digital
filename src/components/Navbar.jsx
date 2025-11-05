@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-scroll';
 import { useCart } from '../context/CartContext';
-import { FiMenu, FiX } from 'react-icons/fi'; // Importar FiX
-import { motion, AnimatePresence } from 'framer-motion'; // Importar animação
+import { FiMenu, FiX } from 'react-icons/fi'; 
+import { motion, AnimatePresence } from 'framer-motion'; 
 import '../css/Navbar.css';
 
 export const Navbar = () => {
