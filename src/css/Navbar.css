@@ -5,7 +5,7 @@
   width: 100%;
   background-color: #000;
   border-bottom: 5px solid transparent;
-  border-image: url('https://i.imgur.com/39m6u0h.png') 30 stretch;
+  border-image: url('/assets/borda-fogo.png') 30 stretch;
   z-index: 1000;
   height: 70px;
 }
@@ -17,14 +17,17 @@
   height: 100%;
 }
 
-.nav-logo {
-  font-size: 1.8rem; 
+.nav-logo-link {
+  font-family: 'Teko', sans-serif;
+  font-size: 1.8rem;
   color: #FFFFFF;
-  cursor: pointer;
   transition: color 0.3s ease;
-  white-space: nowrap; 
+  white-space: nowrap;
+  display: block;
+  cursor: pointer;
+  margin-right: 16px;
 }
-.nav-logo:hover {
+.nav-logo-link:hover {
   color: #EAAA49;
 }
 
@@ -33,7 +36,6 @@
   align-items: center;
   gap: 32px;
 }
-
 .nav-menu a {
   font-family: 'Teko', sans-serif;
   font-size: 1.2rem;
@@ -44,12 +46,10 @@
   position: relative;
   padding-bottom: 5px;
 }
-
 .nav-menu a:hover,
 .nav-menu a.active {
   color: #EAAA49;
 }
-
 .nav-menu a::after {
   content: '';
   position: absolute;
@@ -61,7 +61,6 @@
   background-color: #EAAA49;
   transition: width 0.3s ease;
 }
-
 .nav-menu a.active::after,
 .nav-menu a:hover::after {
   width: 100%;
@@ -70,23 +69,23 @@
 .nav-button {
   padding: 8px 20px;
   font-size: 1.15rem;
-  flex-shrink: 0; 
+  flex-shrink: 0;
+  display: flex;
 }
 
 .nav-toggle {
-  display: none;
+  display: none; 
   font-size: 1.8rem;
   background: transparent;
   border: none;
   color: #FFFFFF;
   cursor: pointer;
-  z-index: 1002; 
+  z-index: 1002;
 }
-
 
 .nav-menu-mobile {
   position: absolute;
-  top: 70px; 
+  top: 70px;
   left: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.95);
@@ -97,8 +96,8 @@
   margin: 0;
   z-index: 999;
   border-bottom: 3px solid #EAAA49;
+  overflow: hidden;
 }
-
 .nav-menu-mobile a {
   display: block;
   padding: 16px 20px;
@@ -108,33 +107,35 @@
   color: #E0E0E0;
   transition: color 0.3s, background-color 0.3s;
 }
-
 .nav-menu-mobile a:hover,
 .nav-menu-mobile a.active {
   background-color: #EAAA49;
   color: #000;
 }
-
 .nav-menu-mobile .nav-button-mobile {
   width: calc(100% - 40px);
   margin: 16px 20px;
   padding: 12px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1029px) { 
   .nav-menu {
     display: none;
   }
   .nav-button {
-    display: none; 
+    display: none !important;
   }
   .nav-toggle {
     display: block;
   }
+
+  .nav-logo-link {
+    font-size: 1.5rem;
+  }
 }
 
-@media (max-width: 380px) {
-  .nav-logo {
-    font-size: 1.5rem; 
+@media (max-width: 379px) {
+  .nav-logo-link {
+    font-size: 1.3rem; 
   }
 }

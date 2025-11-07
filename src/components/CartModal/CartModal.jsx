@@ -4,40 +4,13 @@ import { useCart } from '../../context/CartContext';
 import { FiX, FiShoppingCart, FiPlus, FiMinus, FiLoader, FiSend } from 'react-icons/fi';
 import { AddonModal } from './AddonModal';
 import '../../css/CartModal.css';
-import capaImage from "/src/assets/capa-cardapio.jpg";
 
 const WHATSAPP_NUMBER = '5547996879248';
 
 const categorizedAddons = [
-  {
-    category: 'Hambúrguer (ADICIONAL)',
-    items: [
-      { id: 101, name: 'Industrializado', price: 5.00 },
-      { id: 102, name: 'Gourmet', price: 12.00 }
-    ]
-  },
-  {
-    category: 'Espetinhos (ADICIONAL)',
-    items: [
-      { id: 103, name: 'Pão de alho', price: 6.00 },
-      { id: 104, name: 'Frango', price: 8.00 },
-      { id: 105, name: 'Porco', price: 8.00 },
-      { id: 106, name: 'Coração', price: 9.00 },
-      { id: 107, name: 'Queijo Coalho', price: 9.00 },
-      { id: 108, name: 'Carne Alcatra', price: 9.00 },
-      { id: 109, name: 'Linguiça', price: 9.00 },
-      { id: 110, name: 'Medalhão de Frango', price: 13.00 },
-      { id: 111, name: 'Medalhão de Alcatra', price: 13.00 }
-    ]
-  },
-  {
-    category: 'Demais (ADICIONAL)',
-    items: [
-      { id: 112, name: 'Bacon', price: 4.00 },
-      { id: 113, name: 'Ovo', price: 3.00 },
-      { id: 114, name: 'Cebola', price: 3.00 }
-    ]
-  }
+  { category: 'Hambúrguer (ADICIONAL)', items: [ { id: 101, name: 'Industrializado', price: 5.00 }, { id: 102, name: 'Gourmet', price: 12.00 } ] },
+  { category: 'Espetinhos (ADICIONAL)', items: [ { id: 103, name: 'Pão de alho', price: 6.00 }, { id: 104, name: 'Frango', price: 8.00 }, { id: 105, name: 'Porco', price: 8.00 }, { id: 106, name: 'Coração', price: 9.00 }, { id: 107, name: 'Queijo Coalho', price: 9.00 }, { id: 108, name: 'Carne Alcatra', price: 9.00 }, { id: 109, name: 'Linguiça', price: 9.00 }, { id: 110, name: 'Medalhão de Frango', price: 13.00 }, { id: 111, name: 'Medalhão de Alcatra', price: 13.00 } ] },
+  { category: 'Demais (ADICIONAL)', items: [ { id: 112, name: 'Bacon', price: 4.00 }, { id: 113, name: 'Ovo', price: 3.00 }, { id: 114, name: 'Cebola', price: 3.00 } ] }
 ];
 
 const products = {
@@ -91,10 +64,8 @@ export const CartModal = () => {
 
   const formatPrice = (price) => price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
   
-  const getItemQuantity = (id, cartItemId = null) => {
-    const key = cartItemId ? 'cartItemId' : 'id';
-    const idToFind = cartItemId || id;
-    const item = cartItems.find(item => item[key] === idToFind);
+  const getSimpleItemQuantity = (id) => {
+    const item = cartItems.find(item => item.id === id && !item.cartItemId);
     return item ? item.quantity : 0;
   };
   
@@ -264,12 +235,13 @@ ${paymentText}
             
             <div className="modal-body">
               <img 
-                src={capaImage}
+                src="/src/assets/capa-cardapio.jpg" 
                 alt="Capa do Cardápio" 
                 className="modal-cover-image"
                 onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/600x150/222/FFF?text=Erro+na+Imagem'; }}
               />
-              
+
+              {/* --- CARDÁPIO (ESPETINHOS) --- */}
               <div className="product-category">
                 <h3 className="font-display">Espetinhos</h3>
                 {products.espetinhos.map(product => (
@@ -279,12 +251,12 @@ ${paymentText}
                       {product.description && <p className="product-description">{product.description}</p>}
                       <p>{formatPrice(product.price)}</p>
                     </div>
-                    {getItemQuantity(product.id) === 0 ? (
+                    {getSimpleItemQuantity(product.id) === 0 ? (
                       <button className="btn-add" onClick={() => addItem(product)}>Adicionar</button>
                     ) : (
                       <div className="quantity-control">
                         <button onClick={() => removeItem(product)}><FiMinus /></button>
-                        <span>{getItemQuantity(product.id)}</span>
+                        <span>{getSimpleItemQuantity(product.id)}</span>
                         <button onClick={() => addItem(product)}><FiPlus /></button>
                       </div>
                     )}
@@ -292,6 +264,7 @@ ${paymentText}
                 ))}
               </div>
               
+              {/* --- CARDÁPIO (LANCHES) --- */}
               <div className="product-category">
                 <h3 className="font-display">Lanches</h3>
                 {products.lanches.map(product => (
@@ -308,6 +281,7 @@ ${paymentText}
                 ))}
               </div>
               
+              {/* --- CARDÁPIO (BEBIDAS) --- */}
               <div className="product-category">
                 <h3 className="font-display">Bebidas</h3>
                 {products.bebidas.map(product => (
@@ -316,12 +290,12 @@ ${paymentText}
                       <h4>{product.name}</h4>
                       <p>{formatPrice(product.price)}</p>
                     </div>
-                    {getItemQuantity(product.id) === 0 ? (
+                    {getSimpleItemQuantity(product.id) === 0 ? (
                       <button className="btn-add" onClick={() => addItem(product)}>Adicionar</button>
                     ) : (
                       <div className="quantity-control">
                         <button onClick={() => removeItem(product)}><FiMinus /></button>
-                        <span>{getItemQuantity(product.id)}</span>
+                        <span>{getSimpleItemQuantity(product.id)}</span>
                         <button onClick={() => addItem(product)}><FiPlus /></button>
                       </div>
                     )}
@@ -329,111 +303,155 @@ ${paymentText}
                 ))}
               </div>
 
-              <div className="checkout-form">
-                <h3 className="font-display">Seus Dados</h3>
-                
-                <div className="form-group">
-                  <label htmlFor="name">Seu Nome</label>
-                  <input 
-                    type="text" id="name" className="form-input" placeholder="Como devemos te chamar?"
-                    value={customerInfo.name}
-                    onChange={(e) => handleFieldChange('name', e.target.value)} 
-                  />
+              {/* --- 1. MUDANÇA: "MEU PEDIDO" (MOVEMOS PARA CÁ) --- */}
+              {cartItems.length > 0 && (
+                <div className="cart-summary">
+                  <h3 className="font-display">Meu Pedido</h3>
+                  {cartItems.map((item) => (
+                    <div className="product-item" key={item.cartItemId || item.id}>
+                      <div className="product-info">
+                        <h4>{item.name}</h4>
+                        {item.addons && item.addons.length > 0 && (
+                          <div className="summary-item-addons">
+                            {item.addons.map(addon => addon.name).join(', ')}
+                          </div>
+                        )}
+                        <p>{formatPrice(item.totalItemPrice)}</p>
+                      </div>
+                      <div className="quantity-control">
+                        <button onClick={() => removeItem(item)}><FiMinus /></button>
+                        <span>{item.quantity}</span>
+                        <button onClick={() => addItem(item)}><FiPlus /></button>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                
-                <div className="form-group">
-                  <label htmlFor="phone">Seu WhatsApp</label>
-                  <input 
-                    type="tel" id="phone" className="form-input" placeholder="(47) 99999-9999"
-                    value={customerInfo.phone}
-                    onChange={(e) => handleFieldChange('phone', e.target.value)} 
-                  />
-                </div>
+              )}
+              {/* --- FIM DE "MEU PEDIDO" --- */}
 
-                <div className="form-group">
-                  <label>Método de Entrega</label>
-                  <div className="radio-group">
-                    <button 
-                      className={`radio-btn ${deliveryMethod === 'retirada' ? 'active' : ''}`}
-                      onClick={() => handleDeliveryMethodChange('retirada')}
-                    >
-                      Retirada no Balcão
-                    </button>
-                    <button 
-                      className={`radio-btn ${deliveryMethod === 'entrega' ? 'active' : ''}`}
-                      onClick={() => handleDeliveryMethodChange('entrega')}
-                    >
-                      Entrega (Delivery)
-                    </button>
+              {cartItems.length > 0 && (
+                <div className="checkout-form">
+                  <h3 className="font-display">Seus Dados</h3>
+                  
+                  <div className="form-group">
+                    <label htmlFor="name">Seu Nome</label>
+                    <input 
+                      type="text" id="name" className="form-input" placeholder="Como devemos te chamar?"
+                      value={customerInfo.name}
+                      onChange={(e) => handleFieldChange('name', e.target.value)} 
+                    />
                   </div>
-                </div>
+                  
+                  <div className="form-group">
+                    <label htmlFor="phone">Seu WhatsApp</label>
+                    <input 
+                      type="tel" id="phone" className="form-input" placeholder="(47) 99999-9999"
+                      value={customerInfo.phone}
+                      onChange={(e) => handleFieldChange('phone', e.target.value)} 
+                    />
+                  </div>
 
-                {deliveryMethod === 'entrega' && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    className="delivery-fields"
-                  >
-                    <div className="form-group">
-                      <label htmlFor="cep">CEP</label>
-                      <input 
-                        type="text" id="cep" className="form-input" placeholder="Ex: 89200-000"
-                        value={customerInfo.cep}
-                        onChange={(e) => handleFieldChange('cep', e.target.value)} 
-                        onBlur={handleCalculateFee}
-                      />
+                  <div className="form-group">
+                    <label>Método de Entrega</label>
+                    <div className="radio-group">
+                      <button 
+                        className={`radio-btn ${deliveryMethod === 'retirada' ? 'active' : ''}`}
+                        onClick={() => handleDeliveryMethodChange('retirada')}
+                      >
+                        Retirada no Balcão
+                      </button>
+                      <button 
+                        className={`radio-btn ${deliveryMethod === 'entrega' ? 'active' : ''}`}
+                        onClick={() => handleDeliveryMethodChange('entrega')}
+                      >
+                        Entrega (Delivery)
+                      </button>
                     </div>
-                    <div className="form-group">
-                      <label htmlFor="number">Número da Casa</label>
-                      <input 
-                        type="text" id="number" className="form-input" placeholder="Ex: 123"
-                        value={customerInfo.number}
-                        onChange={(e) => handleFieldChange('number', e.target.value)} 
-                      />
-                    </div>
-                    
-                    <div className="fee-result">
-                      {isLoadingFee && <div className="fee-loading"><FiLoader className="spinner" /> Verificando CEP...</div>}
-                      {feeError && <div className="fee-error">{feeError}</div>}
-                      {deliveryFee > 0 && (
-                        <div className="fee-success">
-                          Taxa para {customerInfo.neighborhood}: {formatPrice(deliveryFee)}
+                  </div>
+
+                  {deliveryMethod === 'entrega' && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      className="delivery-fields"
+                    >
+                      <div className="form-group">
+                        <label htmlFor="cep">CEP</label>
+                        <input 
+                          type="text" id="cep" className="form-input" placeholder="Ex: 89200-000"
+                          value={customerInfo.cep}
+                          onChange={(e) => handleFieldChange('cep', e.target.value)} 
+                          onBlur={handleCalculateFee}
+                        />
+                      </div>
+                      
+                      {customerInfo.street && (
+                        <div className="form-group">
+                          <label htmlFor="street">Rua</label>
+                          <input 
+                            type="text" 
+                            id="street" 
+                            className="form-input" 
+                            value={customerInfo.street}
+                            disabled 
+                          />
                         </div>
                       )}
+
+                      <div className="form-group">
+                        <label htmlFor="number">Número da Casa</label>
+                        <input 
+                          type="text" id="number" className="form-input" placeholder="Ex: 123"
+                          value={customerInfo.number}
+                          onChange={(e) => handleFieldChange('number', e.target.value)} 
+                        />
+                      </div>
+                      
+                      <div className="fee-result">
+                        {isLoadingFee && <div className="fee-loading"><FiLoader className="spinner" /> Verificando CEP...</div>}
+                        {feeError && <div className="fee-error">{feeError}</div>}
+                        {deliveryFee > 0 && (
+                          <div className="fee-success">
+                            Taxa para {customerInfo.neighborhood}: {formatPrice(deliveryFee)}
+                          </div>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                  
+                  {deliveryMethod === 'retirada' && (
+                    <div className="form-group">
+                      <label>Pagamento na Retirada</label>
+                      <p className="payment-info">Você pode pagar com Cartão, Dinheiro ou PIX no balcão.</p>
                     </div>
-                  </motion.div>
-                )}
-                
-                {deliveryMethod === 'retirada' && (
-                  <div className="form-group">
-                    <label>Pagamento na Retirada</label>
-                    <p className="payment-info">Você pode pagar com Cartão, Dinheiro ou PIX no balcão.</p>
-                  </div>
-                )}
-                {deliveryMethod === 'entrega' && (
-                  <div className="form-group">
-                    <label>Pagamento da Entrega</label>
-                    <p className="payment-info">Pagamento via PIX. (O pedido será enviado pelo WhatsApp para confirmação).</p>
-                  </div>
-                )}
-                
-              </div>
+                  )}
+                  {deliveryMethod === 'entrega' && (
+                    <div className="form-group">
+                      <label>Pagamento da Entrega</label>
+                      <p className="payment-info">Pagamento via PIX. (O pedido será enviado pelo WhatsApp para confirmação).</p>
+                    </div>
+                  )}
+                  
+                </div>
+              )}
             </div> 
 
-            <div className="modal-footer">
-              <div className="total-price">
-                <p>Total:</p>
-                <span className="font-display">{formatPrice(finalTotalPrice)}</span>
+            {cartItems.length > 0 && (
+              <div className="modal-footer">
+                <div className="total-price">
+                  <p>Total:</p>
+                  <span className="font-display">{formatPrice(finalTotalPrice)}</span>
+                </div>
+                <button 
+                  className="btn-primary btn-checkout"
+                  onClick={handleSendToWhatsApp}
+                  disabled={!isFormValid()}
+                >
+                  <FiSend />
+                  <span>Enviar Pedido</span>
+                </button>
               </div>
-              <button 
-                className="btn-primary btn-checkout"
-                onClick={handleSendToWhatsApp}
-                disabled={!isFormValid()}
-              >
-                <FiSend />
-                <span>Enviar Pedido</span>
-              </button>
-            </div>
+            )}
 
           </motion.div>
         </>

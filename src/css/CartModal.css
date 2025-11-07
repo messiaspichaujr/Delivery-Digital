@@ -307,3 +307,26 @@
     max-height: 250px; 
   }
 }
+
+.cart-summary {
+  margin-top: 20px;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+}
+
+.cart-summary h3 {
+  font-size: 1.8rem;
+  color: #EAAA49;
+  margin-bottom: 12px;
+}
+
+.cart-summary .product-item {
+  padding: 12px 0;
+}
+
+.summary-item-addons {
+  font-size: 0.85rem;
+  color: #aaa;
+  font-style: italic;
+  margin-top: 4px;
+}

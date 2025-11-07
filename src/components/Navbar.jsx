@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-scroll';
 import { useCart } from '../context/CartContext';
-import { FiMenu, FiX } from 'react-icons/fi'; 
-import { motion, AnimatePresence } from 'framer-motion'; 
+import { FiMenu, FiX } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
 import '../css/Navbar.css';
 
 export const Navbar = () => {
   const { dispatch } = useCart();
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const openCartModal = () => {
@@ -22,16 +21,16 @@ export const Navbar = () => {
   return (
     <header className="header" style={{ position: 'relative' }}>
       <nav className="navbar container">
-        
+
         <Link 
           to="home" 
-          className="nav-logo font-display"
+          className="nav-logo-link font-display" 
           spy={true} smooth={true} offset={-70} duration={500}
           onClick={closeMobileMenu}
         >
           Espetinho do Alemão
         </Link>
-
+        
         <ul className="nav-menu">
           <li><Link to="home" activeClass="active" spy={true} smooth={true} offset={-70} duration={500}>Home</Link></li>
           <li><Link to="sobre" activeClass="active" spy={true} smooth={true} offset={-70} duration={500}>Sobre</Link></li>
@@ -52,10 +51,10 @@ export const Navbar = () => {
         {isMobileMenuOpen && (
           <motion.ul 
             className="nav-menu-mobile"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
           >
             <li><Link to="home" onClick={closeMobileMenu} activeClass="active" spy={true} smooth={true} offset={-70} duration={500}>Home</Link></li>
             <li><Link to="sobre" onClick={closeMobileMenu} activeClass="active" spy={true} smooth={true} offset={-70} duration={500}>Sobre</Link></li>
