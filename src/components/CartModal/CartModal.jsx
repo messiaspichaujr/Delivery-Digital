@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../../context/CartContext';
 import { FiX, FiShoppingCart, FiPlus, FiMinus, FiLoader, FiSend } from 'react-icons/fi';
 import { AddonModal } from './AddonModal';
+import capaCardapio from '../../assets/capa-cardapio.jpg'
 import '../../css/CartModal.css';
 
 const WHATSAPP_NUMBER = '5547996879248';
@@ -235,10 +236,10 @@ ${paymentText}
             
             <div className="modal-body">
               <img 
-                src="/src/assets/capa-cardapio.jpg" 
+                src={capaCardapio} 
                 alt="Capa do Cardápio" 
                 className="modal-cover-image"
-                onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/600x150/222/FFF?text=Erro+na+Imagem'; }}
+                onError={(e) => { e.currentTarget.src = '/src/assets/capa-cardapio.jpg'; }}
               />
 
               {/* --- CARDÁPIO (ESPETINHOS) --- */}
