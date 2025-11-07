@@ -34,12 +34,10 @@
   border-bottom: 1px solid #333;
   flex-shrink: 0;
 }
-
 .modal-header h2 {
   font-size: 2rem;
   color: #EAAA49;
 }
-
 .modal-close-btn {
   background: transparent;
   border: none;
@@ -77,12 +75,18 @@
 .product-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 16px 0;
   border-bottom: 1px solid #222;
 }
 .product-item:last-child {
   border-bottom: none;
+}
+
+.product-info {
+  padding-right: 16px;
+  flex: 1;
+  min-width: 0; 
 }
 
 .product-info h4 {
@@ -91,6 +95,7 @@
   color: #fff;
   margin-bottom: 4px;
 }
+
 .product-info p {
   font-size: 1rem;
   color: #EAAA49;
@@ -103,6 +108,9 @@
   font-weight: 400;
   line-height: 1.5;
   margin-top: 6px;
+  margin-bottom: 8px;
+  word-break: break-word;
+  white-space: normal;
 }
 
 
@@ -117,7 +125,7 @@
   font-size: 0.9rem;
   cursor: pointer;
   transition: background-color 0.3s;
-  flex-shrink: 0;
+  flex-shrink: 0; 
 }
 .btn-add:hover {
   background-color: #FFC700;
@@ -297,36 +305,11 @@
   .modal-container {
     height: 95vh;
   }
-  
   .modal-cover-image {
     height: 120px;
     margin: 16px 0;
   }
-
   .addon-modal-body {
-    max-height: 250px; 
+    max-height: 250px;
   }
-}
-
-.cart-summary {
-  margin-top: 20px;
-  border-top: 1px solid #333;
-  padding-top: 20px;
-}
-
-.cart-summary h3 {
-  font-size: 1.8rem;
-  color: #EAAA49;
-  margin-bottom: 12px;
-}
-
-.cart-summary .product-item {
-  padding: 12px 0;
-}
-
-.summary-item-addons {
-  font-size: 0.85rem;
-  color: #aaa;
-  font-style: italic;
-  margin-top: 4px;
 }
