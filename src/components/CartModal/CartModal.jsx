@@ -10,7 +10,7 @@ const WHATSAPP_NUMBER = '5547996879248';
 
 const categorizedAddons = [
   { category: 'Hambúrguer (ADICIONAL)', items: [ { id: 101, name: 'Industrializado', price: 5.00 }, { id: 102, name: 'Gourmet', price: 12.00 } ] },
-  { category: 'Espetinhos (ADICIONAL)', items: [ { id: 103, name: 'Pão de alho', price: 6.00 }, { id: 104, name: 'Frango', price: 8.00 }, { id: 105, name: 'Porco', price: 8.00 }, { id: 106, name: 'Coração', price: 9.00 }, { id: 107, name: 'Queijo Coalho', price: 9.00 }, { id: 108, name: 'Carne Alcatra', price: 9.00 }, { id: 109, name: 'Linguiça', price: 9.00 }, { id: 110, name: 'Medalhão de Frango', price: 13.00 }, { id: 111, name: 'Medalhão de Alcatra', price: 13.00 } ] },
+  { category: 'Espetinhos (ADICIONAL)', items: [ { id: 103, name: 'Pão de alho', price: 6.00 }, { id: 104, name: 'Frango', price: 8.00 }, { id: 105, name: 'Porco', price: 8.00 }, { id: 106, name: 'Coração', price: 9.00 }, { id: 107, name: 'Queijo Coalho', price: 9.00 }, { id: 108, name: 'Carne Alcatra', price: 10.00 }, { id: 109, name: 'Linguiça', price: 10.00 }, { id: 110, name: 'Medalhão de Frango', price: 13.00 }, { id: 111, name: 'Medalhão de Alcatra', price: 13.00 } ] },
   { category: 'Demais (ADICIONAL)', items: [ { id: 112, name: 'Bacon', price: 4.00 }, { id: 113, name: 'Ovo', price: 3.00 }, { id: 114, name: 'Cebola', price: 3.00 } ] }
 ];
 
@@ -21,8 +21,8 @@ const products = {
     { id: 3, name: 'Porco', price: 8.00, totalItemPrice: 8.00 },
     { id: 4, name: 'Coração', price: 9.00, totalItemPrice: 9.00 },
     { id: 5, name: 'Queijo Coalho', price: 9.00, totalItemPrice: 9.00 },
-    { id: 6, name: 'Carne Alcatra', price: 9.00, totalItemPrice: 9.00 },
-    { id: 7, name: 'Linguiça', price: 9.00, totalItemPrice: 9.00 },
+    { id: 6, name: 'Carne Alcatra', price: 10.00, totalItemPrice: 10.00 },
+    { id: 7, name: 'Linguiça', price: 10.00, totalItemPrice: 10.00 },
     { id: 8, name: 'Medalhão de Frango', description: '(Frango com bacon)', price: 13.00, totalItemPrice: 13.00 },
     { id: 9, name: 'Medalhão de Carne Alcatra', description: '(Carne com bacon)', price: 13.00, totalItemPrice: 13.00 },
   ],
