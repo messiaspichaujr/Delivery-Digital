@@ -17,10 +17,10 @@ const categorizedAddons = [
 const products = {
   espetinhos: [
     { id: 1, name: 'Pão de Alho', price: 6.00, totalItemPrice: 6.00 },
-    { id: 2, name: 'Frango', price: 8.00, totalItemPrice: 8.00 },
-    { id: 3, name: 'Porco', price: 8.00, totalItemPrice: 8.00 },
-    { id: 4, name: 'Coração', price: 9.00, totalItemPrice: 9.00 },
-    { id: 5, name: 'Queijo Coalho', price: 9.00, totalItemPrice: 9.00 },
+    { id: 2, name: 'Frango', price: 9.00, totalItemPrice: 9.00 },
+    { id: 3, name: 'Porco', price: 9.00, totalItemPrice: 9.00 },
+    { id: 4, name: 'Coração', price: 10.00, totalItemPrice: 10.00 },
+    { id: 5, name: 'Queijo Coalho', price: 10.00, totalItemPrice: 10.00 },
     { id: 6, name: 'Carne Alcatra', price: 10.00, totalItemPrice: 10.00 },
     { id: 7, name: 'Linguiça', price: 10.00, totalItemPrice: 10.00 },
     { id: 8, name: 'Medalhão de Frango', description: '(Frango com bacon)', price: 13.00, totalItemPrice: 13.00 },
