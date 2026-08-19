@@ -23,9 +23,7 @@ const products = {
     { id: 5, name: 'Queijo Coalho', price: 10.00, totalItemPrice: 10.00 },
     { id: 6, name: 'Carne Alcatra', price: 10.00, totalItemPrice: 10.00 },
     { id: 7, name: 'Linguiça', price: 10.00, totalItemPrice: 10.00 },
-    { id: 8, name: 'Medalhão de Frango', description: '(Frango com bacon)', price: 13.00, totalItemPrice: 13.00 },
-    { id: 9, name: 'Medalhão de Carne Alcatra', description: '(Carne com bacon)', price: 13.00, totalItemPrice: 13.00 },
-  ],
+    ],
   lanches: [
     { id: 10, name: 'Gourmet do Alemão', description: '(pão,hambúrguer gourmet,bacon,tomate,alface,queijo cheddar e maionese caseira)', price: 25.00, addons: categorizedAddons },
     { id: 11, name: 'Gourmet Duplo do Alemão', description: '(pão,2 hambúrguer gourmet,bacon,tomate,alface,queijo cheddar e maionese caseira)', price: 35.00, addons: categorizedAddons },
