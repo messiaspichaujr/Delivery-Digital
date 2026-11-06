@@ -16,7 +16,7 @@ const categorizedAddons = [
 
 const products = {
   espetinhos: [
-    { id: 1, name: 'Pão de Alho', price: 8.00, totalItemPrice: 8.00 },
+    { id: 1, name: 'Pão de Alho', price: 8.00, totalItemPrice: 7.00 },
     { id: 2, name: 'Frango', price: 9.00, totalItemPrice: 9.00 },
     { id: 3, name: 'Porco', price: 9.00, totalItemPrice: 9.00 },
     { id: 4, name: 'Coração', price: 10.00, totalItemPrice: 10.00 },
@@ -36,8 +36,8 @@ const products = {
     { id: 18, name: 'Lanche de Churrasco de Frango', description: '(pão ,frango,bacon,queijo,cebola,tomate,alface e maionese caseira)', price: 22.00, addons: categorizedAddons },
     { id: 19, name: 'Lanche de Churrasco de Porco', description: '(pão ,porco,bacon,queijo,cebola,tomate,alface e maionese caseira)', price: 22.00, addons: categorizedAddons },
     { id: 20, name: 'Lanche de Churrasco de Coração', description: '(pão ,coração,bacon,queijo,cebola,tomate,alface e maionese caseira)', price: 22.00, addons: categorizedAddons },
-    { id: 21, name: 'Lanche de Churrasco de Carne Alcatra', description: '(pão ,alcatra,bacon,queijo,cebola,tomate,alface e maionese caseira)', price: 22.00, addons: categorizedAddons },
-    { id: 22, name: 'Lanche de Churrasco de Linguiça', description: '(pão ,linguiça,bacon,queijo,cebola,tomate,alface e maionese caseira)', price: 22.00, addons: categorizedAddons },
+    { id: 21, name: 'Lanche de Churrasco de Carne Alcatra', description: '(pão ,alcatra,bacon,queijo,cebola,tomate,alface e maionese caseira)', price: 27.00, addons: categorizedAddons },
+    { id: 22, name: 'Lanche de Churrasco de Linguiça', description: '(pão ,linguiça,bacon,queijo,cebola,tomate,alface e maionese caseira)', price: 27.00, addons: categorizedAddons },
   ],
   bebidas: [
     { id: 23, name: 'Guaraná Antarctica 2 L', price: 16.00, totalItemPrice: 16.00 },
