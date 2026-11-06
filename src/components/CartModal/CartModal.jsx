@@ -16,7 +16,7 @@ const categorizedAddons = [
 
 const products = {
   espetinhos: [
-    { id: 1, name: 'Pão de Alho', price: 8.00, totalItemPrice: 7.00 },
+    { id: 1, name: 'Pão de Alho', price: 7.00, totalItemPrice: 7.00 },
     { id: 2, name: 'Frango', price: 9.00, totalItemPrice: 9.00 },
     { id: 3, name: 'Porco', price: 9.00, totalItemPrice: 9.00 },
     { id: 4, name: 'Coração', price: 10.00, totalItemPrice: 10.00 },
